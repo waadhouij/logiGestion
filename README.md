@@ -1,12 +1,13 @@
 # LOGIGESTION
 
-## Description
+## Description of project
 Logiciel de Gestion d'une supérette. Pour chaque section suivante, il y a les fonctionnalités de création, modification, suppression, affichage et sauvegarde :
 + GESTION DES ARTICLES
 + GESTION DES COMMANDES
 + GESTION DES FACTURES
 + GESTION DES CLIENTS
 + SAUVEGARDER
+Pour connaitre en détail les règles de gestion et spécificités métiers du programme vous pouvez lire : logiGestion/JEU DE TEST.pdf
 
 How to install
 ---
@@ -18,9 +19,10 @@ For Eclipse :
 
 How to Use
 ---
+To know more please visit logiGestion/JEU DE TEST.pdf
 1. Go to Serie53/ClientSerie53.java and run the JAVA APPLICATION
-2. Have fun testing or follow the guidelines JEU DE TEST.pdf
-3. Go to Serie61/Client61.java and run the JAVA APPLICATION, you will experiences a few java frames..
+2. Have fun testing or follow the guidelines JEU DE TEST.pdf Please pay attention to what happens to the invoice or the order if you delete or modify a product or such things… ;) 
+3. Go to Serie61/Client61.java and run the JAVA APPLICATION, you will experiences a few java frames. Login and password should be the same. Any will work…
 
 
 Website
