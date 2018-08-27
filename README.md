@@ -11,8 +11,8 @@ Logiciel de Gestion d'une supérette. Pour chaque section suivante, il y a les f
 How to install
 ---
 For Eclipse :
-2. Copy the folder LogiGestion_OK that contains the project and paste it in your Eclipse workspace folder.
-1. Open eclipse and select your workspace 
+1. Copy the folder LogiGestion_OK that contains the project and paste it in your Eclipse workspace folder.
+2. Open eclipse and select your workspace 
 3. Create a new Java Project named LogiGestion_OK
 4. Eclipse will recognize that there is a project with that name in the workspace and will import it. All you have to do is to make refresh (press F5) on the new project.
 
