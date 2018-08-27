@@ -1,14 +1,12 @@
 # LOGIGESTION
-===
 
 ## Description
----
 Logiciel de Gestion d'une supérette. Pour chaque section suivante, il y a les fonctionnalités de création, modification, suppression, affichage et sauvegarde :
-	+ GESTION DES ARTICLES
-	+ GESTION DES COMMANDES
-	+ GESTION DES FACTURES
-	+ GESTION DES CLIENTS
-	+ SAUVEGARDER
++ GESTION DES ARTICLES
++ GESTION DES COMMANDES
++ GESTION DES FACTURES
++ GESTION DES CLIENTS
++ SAUVEGARDER
 
 How to install
 ---
