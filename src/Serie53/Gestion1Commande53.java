@@ -1,7 +1,6 @@
 	package Serie53;
 
 
-
 import MesInterfaces.InterfaceGestion;
 import iPane.ES;
 import mesExceptions.AbandonException;
@@ -98,10 +97,10 @@ public class Gestion1Commande53 implements InterfaceGestion <Commande53<String>,
 		ArticleAbstrait53 art=tabArt.retourner(code) ;
 		if (art!= null) {
 			if (art instanceof ArticlePromo53) 
-				ES.affiche("***   Cet article est en PROMOTION   ***\nPour une quantité minimum de : " +((ArticlePromo53)art).getQuantiteMini()+"\n");
+				ES.affiche("***   Cet article est en PROMOTION   ***\nPour une quantite minimum de : " +((ArticlePromo53)art).getQuantiteMini()+"\n");
 			if (art instanceof ArticleLot53) 
-				ES.affiche("***   Cet article est VENDU EN LOT   ***\nUn lot a une quantité minimum de : " +((ArticleLot53)art).getQtiteLot()+"\n");
-			int quantite = ES.saisie("Quantité : ", 1);
+				ES.affiche("***   Cet article est VENDU EN LOT   ***\nUn lot a une quantite minimum de : " +((ArticleLot53)art).getQtiteLot()+"\n");
+			int quantite = ES.saisie("Quantite : ", 1);
 			return (new LigneDeCommande53(code, quantite));
 		}
 		return null;
@@ -120,11 +119,11 @@ public class Gestion1Commande53 implements InterfaceGestion <Commande53<String>,
 	public void supprimer(Commande53<String> cde, Object... objects) throws AbandonException {
 		TableDesCommandes53 tabCde =  (TableDesCommandes53) objects[0];
 		afficher(cde, tabCde);
-		int code = ES.saisie("***   SUPPRIMER UNE LIGNE   ***\nsaisir un code produit à supprimer : ", 1);
+		int code = ES.saisie("***   SUPPRIMER UNE LIGNE   ***\nsaisir un code produit a supprimer : ", 1);
 		if (cde.retourner(code) != null && !cde.getEtatFacture())
 			cde.supprimer(code);
 		else if (cde.getEtatFacture())
-			ES.affiche("La facture a été créée, vous ne pouvez pas modifier ou supprimer la commande.");
+			ES.affiche("La facture a create , vous ne pouvez pas modifier ou supprimer la commande.");
 		else
 			ES.affiche("Ce Produit n'existe pas.\n");
 		
@@ -134,14 +133,14 @@ public class Gestion1Commande53 implements InterfaceGestion <Commande53<String>,
 		TableDesArticles53 tabArt = (TableDesArticles53) objects[0];
 		TableDesCommandes53 tabCde =  (TableDesCommandes53) objects[1];
 		afficher(cde, tabCde);
-		int code = ES.saisie("***   MODIFIER UNE LIGNE   ***\nsaisir le code produit de la ligne à modifier : ", 1);
+		int code = ES.saisie("***   MODIFIER UNE LIGNE   ***\nsaisir le code produit de la ligne a modifier : ", 1);
 		if (cde.retourner(code) != null) {
 			LigneDeCommande53 ldc = cde.retourner(code);
 			if (ldc != null) {
 				if (ldc == null)
-					ES.affiche("le code produit de cette ligne n'existe pas. vous devez la créer");
+					ES.affiche("le code produit de cette ligne n'existe pas. vous devez la create");
 				else {
-					int qtite = ES.saisieModification("Quantité \n(laissez vide pour l'ancienne valeur : " + ldc.getQuantite() + " ) ", 1);
+					int qtite = ES.saisieModification("Quantite \n(laissez vide pour l'ancienne valeur : " + ldc.getQuantite() + " ) ", 1);
 					if(qtite != 0)
 						ldc.setQuantite(qtite);
 				}

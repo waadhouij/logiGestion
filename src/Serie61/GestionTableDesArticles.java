@@ -16,6 +16,8 @@ import Serie53.TableDesCommandes53;
 import connexions.ConnexionFichiers;
 import iPane.ES;
 import mesExceptions.AbandonException;
+import java.awt.Color;
+import java.awt.Font;
 
 public class GestionTableDesArticles extends JFrame implements ActionListener{
 	
@@ -30,22 +32,34 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 		fichArt = new ConnexionFichiers<TableDesArticles53>(nomPhysique);
 		this.tableArt = tabArt;
 		this.tabCde = tabCde;
-		this.setLayout(new GridLayout(6, 2, 0, 0));
 		this.setSize(400, 300);
 		this.setTitle("GESTION DES ARTICLES");
 		creer= new JButton("CREER UN PRODUIT");
+		creer.setBounds(56, 5, 271, 43);
+		creer.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		creer.setBackground(Color.RED);
 		modifier= new JButton("MODIFIER UN PRODUIT");
 		supprimer = new JButton("SUPPRIMER UN PRODUIT");
+		supprimer.setBounds(56, 59, 271, 43);
+		supprimer.setBackground(Color.RED);
+		supprimer.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		afficher= new JButton("AFFICHER");
+		afficher.setBounds(50, 113, 277, 43);
+		afficher.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		afficher.setBackground(Color.RED);
 		fin= new JButton("FIN");
+		fin.setBounds(50, 167, 277, 43);
+		fin.setBackground(Color.RED);
+		fin.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		getContentPane().setLayout(null);
 		
-		this.add(creer); 
+		getContentPane().add(creer); 
 		creer.addActionListener(this);
-		this.add(supprimer); 
+		getContentPane().add(supprimer); 
 		supprimer.addActionListener(this);
-		this.add(afficher); 
+		getContentPane().add(afficher); 
 		afficher.addActionListener(this);
-		this.add(fin); 
+		getContentPane().add(fin); 
 		fin.addActionListener(this);
 		
 		this.setLocationRelativeTo(null);
@@ -113,12 +127,12 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 
 	public int menuChoix(Object ...objects) throws AbandonException {
 		String menu = "\n ***   GESTION des ARTICLES   ***\n\n" 
-						+ " CRÉER un article ................................ 1 \n"
+						+ " CRÃ‰ER un article ................................ 1 \n"
 						+ " MODIFIER un article ........................... 2 \n"
 						+ " SUPPRIMER un article ......................... 3 \n"
 						+ " AFFICHER le stock ............................. 4 \n"
 						+ " AFFICHER les articles en Promotion ... 5 \n"
-						+ " AFFICHER les articles bradés par lot ... 6 \n"
+						+ " AFFICHER les articles bradÃ©s par lot ... 6 \n"
 						+ " SAUVEGARDER les articles ................. 7 \n"
 						+ " FIN ..................................................... 0 \n"
 						+ " VOTRE CHOIX : \n";
@@ -137,7 +151,7 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 	}
 
 	/**
-	 * Saisie pour la création
+	 * Saisie pour la crÃ©ation
 	 * @param tabArt
 	 * @param code
 	 * @return
@@ -147,7 +161,7 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 		int code = (int)objects[0];
 		String designation;
 		do {
-			designation = ES.saisie("\n***   SAISIE D'UN ARTICLE   ***\nDésignation : ");
+			designation = ES.saisie("\n***   SAISIE D'UN ARTICLE   ***\nDÃ©signation : ");
 		}while(designation.isEmpty());
 		float pu = ES.saisie("Prix Unitaire : ", 0.1f);
 		
@@ -158,13 +172,13 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 			case 1:
 				return new Article53(code, designation, pu);
 			case 2:
-				float reduction = ES.saisie(" Réduction à appliquer :",	1, Integer.MAX_VALUE);
+				float reduction = ES.saisie(" RÃ©duction Ã  appliquer :",	1, Integer.MAX_VALUE);
 				int quantiteMini = ES.saisie(" Pour quelle quantite mininum ?", 1, Integer.MAX_VALUE);
 				return new ArticlePromo53(code, designation, pu, quantiteMini, reduction);
 			case 3 : 
-				float reduct = ES.saisie(" Réduction à appliquer :",	1, Integer.MAX_VALUE);
-				int quantiteMin = ES.saisie(" Quelle est la quantité d'un lot ?", 1, Integer.MAX_VALUE);
-				boolean periodeOui = ES.saisieOuiNon(" Votre article sera bradé pendant 7 jours. \n Cela vous convient-il ?");
+				float reduct = ES.saisie(" RÃ©duction Ã  appliquer :",	1, Integer.MAX_VALUE);
+				int quantiteMin = ES.saisie(" Quelle est la quantitÃ© d'un lot ?", 1, Integer.MAX_VALUE);
+				boolean periodeOui = ES.saisieOuiNon(" Votre article sera bradÃ© pendant 7 jours. \n Cela vous convient-il ?");
 				if (periodeOui)
 					return new ArticleLot53(code, designation, pu, quantiteMin, reduct);
 				int periode = ES.saisie(" Pour combien de jours voulez-vous brader cet article par lot ? \n", 1, 365);
@@ -186,9 +200,9 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 			menuProduit += msgSup;
 		}
 		menuProduit += "\n Choisissez le type d'article que vous voulez : \n\n" +
-						" ARTICLE sans réduction ............................................... 1 \n" +
-						" ARTICLE en promotion \n (toute l'année et selon une quantité donnée) ............... 2 \n" +
-						" ARTICLE à réduction par lot \n (sur une période donnée) ............................................. 3 \n" +
+						" ARTICLE sans rÃ©duction ............................................... 1 \n" +
+						" ARTICLE en promotion \n (toute l'annÃ©e et selon une quantitÃ© donnÃ©e) ............... 2 \n" +
+						" ARTICLE Ã  rÃ©duction par lot \n (sur une pÃ©riode donnÃ©e) ............................................. 3 \n" +
 						" FIN .............................................................................. 0 \n" +
 						" VOTRE CHOIX : \n";
 		return  ES.saisie(menuProduit, 0, 3);
@@ -211,9 +225,9 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 			if (ancienArt instanceof ArticlePromo53)
 					type = "en promotion";
 			else if(ancienArt instanceof ArticleLot53)
-					type = "à réduction par lot";
+					type = "Ã  rÃ©duction par lot";
 			else if(ancienArt instanceof Article53)
-					type = "sans réduction";
+					type = "sans rÃ©duction";
 			String msg = "\n Cet article est actuellement un article  *** " + type + " ***\n";
 			int choix = menuTypeProduit(msg);
 			switch (choix) {
@@ -223,16 +237,16 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 					int quantiteMini;
 					float reduction;
 					if (ancienArt instanceof ArticlePromo53) {
-						reduction = ES.saisieModification("Réduction \n(laissez vide pour garder la valeur actuelle: " 
+						reduction = ES.saisieModification("RÃ©duction \n(laissez vide pour garder la valeur actuelle: " 
 									+ ((ArticlePromo53)ancienArt).getReduction() + " ) :\n", 0.1f);
-						quantiteMini = ES.saisieModification("Quantité Minimum \n(laissez vide pour garder la valeur actuelle: " 
+						quantiteMini = ES.saisieModification("QuantitÃ© Minimum \n(laissez vide pour garder la valeur actuelle: " 
 								+ ((ArticlePromo53)ancienArt).getQuantiteMini() + " ) :\n", 1);						if(quantiteMini == 0)
 							quantiteMini = ((ArticlePromo53) ancienArt).getQuantiteMini();
 						if(reduction == 0)
 							reduction = ((ArticlePromo53) ancienArt).getReduction();
 					}else {
-						reduction = ES.saisie("Réduction :\n", 0.1f);
-						quantiteMini = ES.saisie("Quantité Minimum :\n", 1);
+						reduction = ES.saisie("RÃ©duction :\n", 0.1f);
+						quantiteMini = ES.saisie("QuantitÃ© Minimum :\n", 1);
 					}
 					return new ArticlePromo53(code, designation, pu, quantiteMini, reduction);
 				case 3:
@@ -240,11 +254,11 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 					int quantiteMin;
 					int periode ;
 					if (ancienArt instanceof ArticleLot53) {
-						reduc = ES.saisieModification("Réduction \n(laissez vide pour garder la valeur actuelle: " 
+						reduc = ES.saisieModification("RÃ©duction \n(laissez vide pour garder la valeur actuelle: " 
 								+ ((ArticleLot53)ancienArt).getReduction() + " ) :\n", 0.1f);
-						quantiteMin = ES.saisieModification(" Quantité d'un lot \n(laissez vide pour garder la valeur actuelle: " 
+						quantiteMin = ES.saisieModification(" QuantitÃ© d'un lot \n(laissez vide pour garder la valeur actuelle: " 
 								+ ((ArticleLot53)ancienArt).getQtiteLot() + " ) :\n", 1);
-						periode = ES.saisieModification(" Durée en jour de la vente en lot \n(laissez vide pour garder la valeur actuelle: " + ((ArticleLot53)ancienArt).getPeriode() + " ) :\n", 1, 365);
+						periode = ES.saisieModification(" DurÃ©e en jour de la vente en lot \n(laissez vide pour garder la valeur actuelle: " + ((ArticleLot53)ancienArt).getPeriode() + " ) :\n", 1, 365);
 						if(quantiteMin == 0)
 							quantiteMin = ((ArticleLot53) ancienArt).getQtiteLot();
 						if(reduc == 0)
@@ -252,9 +266,9 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 						if(periode == 0)
 							periode = ((ArticleLot53) ancienArt).getPeriode();
 					}else {
-						reduc = ES.saisie("Réduction :\n", 0.1f);
-						quantiteMin = ES.saisie(" Quantité d'un lot :\n", 1);
-						periode = ES.saisie(" Durée en jour de la vente en lot :\n", 1, 365);
+						reduc = ES.saisie("RÃ©duction :\n", 0.1f);
+						quantiteMin = ES.saisie(" QuantitÃ© d'un lot :\n", 1);
+						periode = ES.saisie(" DurÃ©e en jour de la vente en lot :\n", 1, 365);
 						}
 					ArticleLot53 art = new ArticleLot53(code, designation, pu, quantiteMin, reduc);
 					art.setPeriode(periode);
@@ -268,7 +282,7 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 
 
 	/**
-	 * retourne le premier numéro disponible d'un Article
+	 * retourne le premier numÃ©ro disponible d'un Article
 	 * 
 	 * @param tabCde
 	 */
@@ -296,7 +310,7 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 		int code = ES.saisie("\nQuel code d'article voulez-vous supprimer ? ", 1);
 		ArticleAbstrait53 art = tabArt.retourner(code);
 		if (art != null) {
-			Boolean sur = ES.saisieOuiNon("Êtes-vous certain de vouloir supprimer? \nCette action est irréversible (O/N): ");
+			Boolean sur = ES.saisieOuiNon("ÃŠtes-vous certain de vouloir supprimer? \nCette action est irreÌ�versible (O/N): ");
 			if (!sur) throw new AbandonException();
 			tabArt.supprimer(code);
 			tabCde.purge(code);
@@ -307,7 +321,7 @@ public class GestionTableDesArticles extends JFrame implements ActionListener{
 	
 
 	/**
-	 * Modifie (écrase en l'occurence) un article s'il existe
+	 * Modifie (Ã©crase en l'occurence) un article s'il existe
 	 * Un article peut devenir un article normal, en promotion ou brader en lot
 	 * 
 	 * @param tabArt

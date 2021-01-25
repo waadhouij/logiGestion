@@ -31,13 +31,9 @@ public class FrameIdentification extends JFrame implements ActionListener {
 		this.setTitle("FRAME IDENTIFICATION");
 		
 		ImageIcon image = recup("../../ressources/img/logo.png");
-		JLabel lab1 = new JLabel(image);
-		JPanel pan0 = new JPanel();
-		pan0.add(lab1);
-		getContentPane().add(pan0);
 		
 		JPanel pan1 = new JPanel();
-		pan1.setBackground(Color.RED);
+		pan1.setBackground(Color.LIGHT_GRAY);
 		user.setBounds(170, 6, 126, 20);
 		user.addActionListener(this);
 		pan1.setLayout(null);
@@ -49,21 +45,27 @@ public class FrameIdentification extends JFrame implements ActionListener {
 		username.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JPanel pan2 = new JPanel();
-		pan2.setBackground(Color.RED);
+		pan2.setBackground(Color.LIGHT_GRAY);
 		JLabel mdp = new JLabel("Password");
 		mdp.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		pwd.addActionListener(this);
 		pan2.add(mdp);
 		pan2.add(pwd);
 		getContentPane().add(pan2);
-		
-		JPanel pan3 = new JPanel();
+		JLabel lab1 = new JLabel(image);
+		JPanel pan0 = new JPanel();
+		pan0.add(valider);
 		valider.setBackground(Color.GREEN);
 		valider.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		valider.addActionListener(this);
+		pan0.add(lab1);
+		getContentPane().add(pan0);
+		
+		JPanel pan3 = new JPanel();
+		fin.setBounds(164, 0, 59, 29);
 		fin.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		fin.addActionListener(this);
-		pan3.add(valider);
+		pan3.setLayout(null);
 		pan3.add(fin);
 		getContentPane().add(pan3);
 		
