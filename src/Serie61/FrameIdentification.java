@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import iPane.ES;
+import java.awt.Color;
+import java.awt.Font;
 
 public class FrameIdentification extends JFrame implements ActionListener {
 	
@@ -24,7 +26,7 @@ public class FrameIdentification extends JFrame implements ActionListener {
 	JButton fin  = new JButton("FIN");
 	
 	public FrameIdentification() {
-		this.setLayout(new GridLayout(4, 2, 0, 0));
+		getContentPane().setLayout(new GridLayout(4, 2, 0, 0));
 		this.setSize(400, 300);
 		this.setTitle("FRAME IDENTIFICATION");
 		
@@ -32,28 +34,38 @@ public class FrameIdentification extends JFrame implements ActionListener {
 		JLabel lab1 = new JLabel(image);
 		JPanel pan0 = new JPanel();
 		pan0.add(lab1);
-		this.add(pan0);
+		getContentPane().add(pan0);
 		
 		JPanel pan1 = new JPanel();
-		JLabel username = new JLabel("Username");
+		pan1.setBackground(Color.RED);
+		user.setBounds(170, 6, 126, 20);
 		user.addActionListener(this);
-		pan1.add(username);
+		pan1.setLayout(null);
 		pan1.add(user);
-		this.add(pan1);
+		getContentPane().add(pan1);
+		JLabel username = new JLabel("Username");
+		username.setBounds(77, 2, 78, 22);
+		pan1.add(username);
+		username.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JPanel pan2 = new JPanel();
+		pan2.setBackground(Color.RED);
 		JLabel mdp = new JLabel("Password");
+		mdp.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		pwd.addActionListener(this);
 		pan2.add(mdp);
 		pan2.add(pwd);
-		this.add(pan2);
+		getContentPane().add(pan2);
 		
 		JPanel pan3 = new JPanel();
+		valider.setBackground(Color.GREEN);
+		valider.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		valider.addActionListener(this);
+		fin.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		fin.addActionListener(this);
 		pan3.add(valider);
 		pan3.add(fin);
-		this.add(pan3);
+		getContentPane().add(pan3);
 		
 		this.setLocationRelativeTo(null);//centre la fenêtre dans l'ordinateur
 		

@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 
 import Serie53.*;
 import iPane.ES;
+import java.awt.Font;
+import java.awt.Color;
 
 public class Client61 extends JFrame implements ActionListener{
 	
@@ -29,19 +31,34 @@ public class Client61 extends JFrame implements ActionListener{
 	}
 	
 	public Client61() {
-		this.setLayout(new GridLayout(5,1,0,0));
 		this.setSize(300,200);
 		this.setTitle("MENU DE LA SUPERETTE");
+		getContentPane().setLayout(null);
+		gestArt.setBounds(0, 0, 300, 32);
+		gestArt.setBackground(Color.RED);
+		gestArt.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
-		this.add(gestArt);
+		getContentPane().add(gestArt);
 		gestArt.addActionListener(this);
-		this.add(gestCde);
+		gestCde.setBounds(0, 35, 284, 32);
+		gestCde.setBackground(Color.RED);
+		gestCde.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		getContentPane().add(gestCde);
 		gestCde.addActionListener(this);
-		this.add(gestCli);
+		gestCli.setBounds(0, 64, 284, 32);
+		gestCli.setBackground(Color.RED);
+		gestCli.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		getContentPane().add(gestCli);
 		gestCli.addActionListener(this);
-		this.add(gestFact);
+		gestFact.setBounds(0, 96, 284, 32);
+		gestFact.setBackground(Color.RED);
+		gestFact.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		getContentPane().add(gestFact);
 		gestFact.addActionListener(this);
-		this.add(fin);
+		fin.setBounds(0, 128, 284, 32);
+		fin.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		fin.setBackground(Color.RED);
+		getContentPane().add(fin);
 		fin.addActionListener(this);
 		
 		this.setLocationRelativeTo(null);
